@@ -1,19 +1,18 @@
 
 <!doctype html>
-<html lang="en">
 {% load staticfiles %}
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.6">
-  <title>Portfolio</title>
+  <title>Blogs</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -45,7 +44,7 @@
   }
   </style>
   <!-- Custom styles for this template -->
-  <link href="album.css" rel="stylesheet">
+
 </head>
 <body>
   <header>
@@ -59,48 +58,37 @@
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/shantanu-awasthi-ba317619a/" >
             <img src="{% static 'linkedin.png' %}" height=35 width=35 alt="">
           </a>
-          <a class="nav-item nav-link" href="http://twitter.com/@ShantanuAwast14" >
+          <a class="nav-item nav-link" href="http://twitter.com/@ShantanuAwast14">
             <img src="{% static 'twitter.webp' %}" height=35 width=35 alt="">
-
-           </a>
+          </a>
           <a class="nav-item nav-link" href="https://github.com/shantanuatgit/">
             <img src="{% static 'github.png' %}" height=35 width=35 alt="">
           </a>
-          <a class="nav-item nav-link" href="blog">
-            <img src="{% static 'blog.png' %}" height=35 width=35 alt=""></a>
+
         </div>
       </div>
     </nav>
   </header>
 
   <main role="main">
+    <div class="container">
+        <h1 class="jumbotron text-center pt-3">Blogs!</h1>
+        <br/>
+        <br/>
+        <h2>Latest Posts</h2>
+        <hr />
+    {% for blog in blogs.all %}
+    <a href="{% url 'detail' blog.id %}"> <h3>{{ blog.title }}</h3></a>
+    {{ blog.pub_date_new }}
+    <br/>
+          <img class="img-fluid" src="{{blog.image.url}}" height=200 width=200/>
+          <br/>
+          <p> {{ blog.summary }}</p>
 
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1>Hi, I'm Shantanu:)</h1>
-        <p class="lead text-muted">Hey my name is Shantanu Awasthi and i love to make Django web Applications. It's the thrill of handling the request that the people want!</p>
-        <p>
-          <a href="mailto:shantanu3250@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-        <img class="img-fluid" src="{% static 'shantanu.jpg' %}" height="200" width="200"/>
-      </div>
-    </section>
-    <div class="album py-5 bg-light">
-      <div class="container">
 
-        <div class="row">
-          {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-
-              <div class="card-body">
-              <img class="card-img-top" src="{{job.image.url}}"/>
-                <p class="card-text"> <h2> {{ job.summary }}</h2></p>
-
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+    {% endfor %}
+</div>
+    <hr>
 
         </main>
 
@@ -109,7 +97,6 @@
             <p>&copy; Shantanu Awasthi {% now "Y" %}</p>
           </div>
         </footer>
-        <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
